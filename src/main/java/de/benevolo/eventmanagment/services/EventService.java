@@ -14,7 +14,8 @@ import java.util.List;
 @ApplicationScoped
 public class EventService {
 
-   @Inject EventRepository eventRepository;
+   @Inject
+   EventRepository eventRepository;
 
    public Event getEventById(Long id){
        return eventRepository.findById(id);
