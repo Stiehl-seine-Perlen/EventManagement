@@ -7,4 +7,9 @@ import java.util.List;
 
 public class EventRepository implements PanacheRepository<Event> {
 
+
+    public List<Event> getAllEventsOfAssociation(Long associationId) {
+        // Statement stolen from AccountRepository -> fa correct?
+        return find("SELECT fa FROM Event fa WHERE fa.ownedByAssociationId = :associationId", associationId).list();
+    }
 }
