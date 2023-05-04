@@ -1,9 +1,10 @@
 package de.benevolo.eventmanagment.controller;
 
-import com.oracle.svm.core.annotate.Inject;
+
 import de.benevolo.entities.events.Event;
 import de.benevolo.eventmanagment.services.EventService;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
