@@ -16,22 +16,24 @@ public class EventResource {
     EventService eventService;
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Event> getAllEvents() {
+        return eventService.getAllEvents();
+    }
+
+
+    @GET
     @Path("{eventId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Event getEventById(@PathParam("eventId") Long id){
+    public Event getEventById(@PathParam("eventId") Long id) {
         return eventService.getEventById(id);
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Event> getAllEvents(){
-        return eventService.getAllEvents();
-    }
 
     @GET
     @Path("{associationId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Event> getAllEventsForAssociation(@PathParam("associationId") Long associationId){
+    public List<Event> getAllEventsForAssociation(@PathParam("associationId") Long associationId) {
         return eventService.getAllEventsOfAssociation(associationId);
     }
 
@@ -39,7 +41,7 @@ public class EventResource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Event createEvent(Event event){
+    public Event createEvent(Event event) {
         return eventService.persistEvent(event);
     }
 
