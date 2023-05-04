@@ -1,6 +1,6 @@
 package de.benevolo.eventmanagment.services;
 
-import com.github.dockerjava.api.exception.NotAcceptableException;
+
 import de.benevolo.entities.events.Event;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -31,12 +31,9 @@ public class EventService {
 
    @Transactional
    public Event persistEvent(Event event){
-       try {
+
            eventRepository.persist(event);
            return event;
-       } catch (Exception e) {
-           throw new NotAcceptableException("Could Not Persist Event with name" + event.getEventName());
-       }
    }
 
    public Event createEvent(Event event){
