@@ -21,8 +21,6 @@ public class EventResource {
         return eventService.getAllEvents();
     }
 
-    //TODO: Debug this
-    // works sometimes, sometimes not
     @GET
     @Path("{eventId}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -30,7 +28,6 @@ public class EventResource {
         return eventService.getEventById(id);
     }
 
-    //TODO: Change to Query Param
     @GET
     @Path("association/{associationId}")
     @Produces(MediaType.APPLICATION_JSON)
