@@ -11,7 +11,7 @@ public class EventRepository implements PanacheRepository<Event> {
 
 
     public List<Event> getAllEventsOfAssociation(Long associationId) {
-        // Statement stolen from AccountRepository -> fa correct?
+        // Statement stolen from AccountRepository
         return find("SELECT e FROM Event e WHERE e.ownedByAssociationId = :associationId", associationId).list();
     }
 }
