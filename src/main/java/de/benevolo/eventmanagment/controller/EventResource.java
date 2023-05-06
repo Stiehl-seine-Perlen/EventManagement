@@ -9,13 +9,14 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/event")
+@Path("/")
 public class EventResource {
 
     @Inject
     EventService eventService;
 
     @GET
+    @Path("all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Event> getAllEvents() {
         return eventService.getAllEvents();
