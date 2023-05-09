@@ -59,7 +59,7 @@ public class EventResourceTest {
     @Test
     public void shouldReturnEmptyList() {
         when()
-                .get("/event")
+                .get("/all")
                 .then()
                 .statusCode(200)
                 .body(is("[]"));
@@ -96,7 +96,7 @@ public class EventResourceTest {
                 .body(event1)
                 .contentType(ContentType.JSON)
                 .when()
-                .post("/event")
+                .post("/")
                 .then()
                 .statusCode(200);
 
@@ -104,7 +104,7 @@ public class EventResourceTest {
                 .body(event2)
                 .contentType(ContentType.JSON)
                 .when()
-                .post("/event")
+                .post("/")
                 .then()
                 .statusCode(200);
     }
