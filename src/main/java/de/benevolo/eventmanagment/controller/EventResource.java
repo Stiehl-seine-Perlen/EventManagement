@@ -68,6 +68,7 @@ public class EventResource {
     //only Admin
     @Path("admin")
     @GET
+    @RolesAllowed("admin")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Event> getAllEventsAdmin() {
         return eventService.getAllEvents();
@@ -76,6 +77,7 @@ public class EventResource {
     //only logged in User
     @Path("user")
     @GET
+    @RolesAllowed("user")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Event> getAllEventsUser() {
         return eventService.getAllEvents();
