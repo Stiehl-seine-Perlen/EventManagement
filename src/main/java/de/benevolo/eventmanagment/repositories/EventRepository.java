@@ -11,7 +11,6 @@ import java.util.List;
 public class EventRepository implements PanacheRepository<Event> {
 
 
-    //TODO: Debug this
     public List<Event> getAllEventsOfAssociation(Long associationId) {
         return find("SELECT e FROM Event e WHERE e.ownedByAssociationId = ?1", associationId).list();
     }

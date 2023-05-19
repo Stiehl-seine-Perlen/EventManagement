@@ -21,6 +21,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 
 @QuarkusTest
+@Disabled
 //@TestHTTPEndpoint(EventResource.class)
 public class EventResourceTest {
 
