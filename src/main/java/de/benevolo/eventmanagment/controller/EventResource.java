@@ -23,12 +23,14 @@ public class EventResource {
     JsonWebToken idToken;
 
     @GET
+    @RolesAllowed("user")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Event> getAllEvents() {
         return eventService.getAllEvents();
     }
 
     @GET
+    @RolesAllowed("user")
     @Path("{eventId}")
     @Produces(MediaType.APPLICATION_JSON)
 
@@ -37,6 +39,7 @@ public class EventResource {
     }
 
     @GET
+    @RolesAllowed("user")
     @Path("association/{associationId}")
     @Produces(MediaType.APPLICATION_JSON)
 
@@ -44,43 +47,13 @@ public class EventResource {
         return eventService.getAllEventsOfAssociation(associationId);
     }
 
-    @GET
-    @Path("me")
-    @Produces(MediaType.APPLICATION_JSON)
-
-    public String getMe(){
-        return idToken.getRawToken();
-    }
-
-
     @POST
+    @RolesAllowed("admin")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
 
     public Event createEvent(Event event) {
         return eventService.persistEvent(event);
-    }
-
-    /*
-        Only for Authorization Testings
-    */
-
-    //only Admin
-    @Path("admin")
-    @GET
-    @RolesAllowed("admin")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Event> getAllEventsAdmin() {
-        return eventService.getAllEvents();
-    }
-
-    //only logged in User
-    @Path("user")
-    @GET
-    @RolesAllowed("user")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Event> getAllEventsUser() {
-        return eventService.getAllEvents();
     }
 
 
