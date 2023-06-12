@@ -5,6 +5,7 @@ import de.benevolo.entities.events.Event;
 import de.benevolo.eventmanagment.services.EventService;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -43,4 +44,33 @@ public class EventResource {
         return eventService.persistEvent(event);
     }
 
+    @PUT
+    @Path("update/{eventId}")
+    @Transactional
+    public Event updateEvent(@PathParam("eventId") Long id, Event event) {
+        Event entity = eventService.getEventById(id);
+        if(entity == null) {
+            throw new NotFoundException();
+        }
+
+        entity.eventName = event.eventName;
+        entity.ownedByAssociationId = event.ownedByAssociationId;
+        entity.eventDescription = event.eventDescription;
+        entity.membersOnly = event.membersOnly;
+
+        eventService.persistEvent(event);
+
+        return entity;
+    }
+
+    @DELETE
+    @Path("delete/{eventId}")
+    @Transactional
+    public void deleteEvent(@PathParam("eventId") Long id) {
+        Event entity = eventService.getEventById(id);
+        if(entity == null) {
+            throw new NotFoundException();
+        }
+        entity.delete();
+    }
 }
