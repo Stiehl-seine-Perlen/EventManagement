@@ -53,10 +53,10 @@ public class EventResource {
             throw new NotFoundException();
         }
 
-        entity.eventName = event.eventName;
-        entity.ownedByAssociationId = event.ownedByAssociationId;
-        entity.eventDescription = event.eventDescription;
-        entity.membersOnly = event.membersOnly;
+        entity.setEventName(event.getEventName());
+        entity.setOwnedByAssociationId(event.getOwnedByAssociationId());
+        entity.setEventDescription(event.getEventDescription());
+        entity.setMembersOnly(event.getMembersOnly());
 
         eventService.persistEvent(event);
 
@@ -67,10 +67,6 @@ public class EventResource {
     @Path("delete/{eventId}")
     @Transactional
     public void deleteEvent(@PathParam("eventId") Long id) {
-        Event entity = eventService.getEventById(id);
-        if(entity == null) {
-            throw new NotFoundException();
-        }
-        entity.delete();
+        eventService.deleteEvent(id);
     }
 }

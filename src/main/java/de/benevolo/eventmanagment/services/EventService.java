@@ -39,4 +39,8 @@ public class EventService {
    public Event createEvent(Event event){
        return this.persistEvent(event);
    }
+
+    public void deleteEvent(long id){
+         eventRepository.deleteById(id);
+   }
 }
