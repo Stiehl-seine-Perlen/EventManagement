@@ -57,6 +57,7 @@ public class EventResource {
         entity.setOwnedByAssociationId(event.getOwnedByAssociationId());
         entity.setEventDescription(event.getEventDescription());
         entity.setMembersOnly(event.getMembersOnly());
+        entity.setDate(event.getDate());
         
         eventService.persistEvent(event);
 
