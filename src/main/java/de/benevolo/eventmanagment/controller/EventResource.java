@@ -58,8 +58,6 @@ public class EventResource {
         entity.setEventDescription(event.getEventDescription());
         entity.setMembersOnly(event.getMembersOnly());
         entity.setDate(event.getDate());
-        
-        eventService.persistEvent(event);
 
         return entity;
     }

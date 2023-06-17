@@ -33,7 +33,8 @@ public class EventResourceTest {
                   "eventName": "Erstes Event",
                   "eventDescription": "Erstes Event von Association 4",
                   "membersOnly": true,
-                  "eventParticipants":[]
+                  "eventParticipants":[],
+                  "date": "2023-07-15"
                 }
                 				""";
 
@@ -43,7 +44,8 @@ public class EventResourceTest {
                   "eventName": "Zweites Event",
                   "eventDescription": "Event 2 von Association 5",
                   "membersOnly": true,
-                  "eventParticipants":[]
+                  "eventParticipants":[],
+                  "date": "2023-07-30"
                 }
                 				""";
 
