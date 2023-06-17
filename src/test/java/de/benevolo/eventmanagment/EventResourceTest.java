@@ -67,7 +67,6 @@ public class EventResourceTest {
                 .body(is("[]"));
     }
 
-
     @Test
     public void shouldPersistTwoEvents() {
 
@@ -77,6 +76,25 @@ public class EventResourceTest {
         List<Event> list = eventRepository.listAll();
         assertThat(list, hasSize(2));
 
+    }
+
+    @Test
+    public void ShouldUpdateEvent(){
+                given()
+                .body(event1)
+                .contentType(ContentType.JSON)
+                .when()
+                .post("/event")
+                .then()
+                .statusCode(200);
+
+                given()
+                .body(event2)
+                .contentType(ContentType.JSON)
+                .when()
+                .put("/event/update/1")
+                .then()
+                .statusCode(200);
     }
 
 /*    @Test
