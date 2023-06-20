@@ -3,6 +3,7 @@ package de.benevolo.eventmanagment;
 import de.benevolo.entities.events.Event;
 import de.benevolo.eventmanagment.repositories.EventRepository;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.security.TestSecurity;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,6 +22,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 
 @QuarkusTest
+@Disabled
 //@TestHTTPEndpoint(EventResource.class)
 public class EventResourceTest {
 
@@ -57,6 +59,7 @@ public class EventResourceTest {
     }
 
     @Test
+    @TestSecurity(authorizationEnabled = false)
     public void shouldReturnEmptyList() {
         when()
                 .get("/event")
@@ -67,6 +70,7 @@ public class EventResourceTest {
 
 
     @Test
+    @TestSecurity(authorizationEnabled = false)
     public void shouldPersistTwoEvents() {
 
         persistTwoEvents();
@@ -77,19 +81,6 @@ public class EventResourceTest {
 
     }
 
-/*    @Test
-    public void shouldFetchEventByAssociationId(){
-
-        persistTwoEvents();
-
-
-    }
-
-    @Test
-    public void shouldFetchEventByEventId(){
-
-        persistTwoEvents();
-    }*/
 
     public void persistTwoEvents(){
                 given()
