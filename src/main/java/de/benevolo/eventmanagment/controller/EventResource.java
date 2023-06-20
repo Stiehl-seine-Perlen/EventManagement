@@ -18,19 +18,15 @@ public class EventResource {
     @Inject
     EventService eventService;
 
-    @Inject
-    @IdToken
-    JsonWebToken idToken;
-
     @GET
-    @RolesAllowed("user")
+    //@RolesAllowed("user")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Event> getAllEvents() {
         return eventService.getAllEvents();
     }
 
     @GET
-    @RolesAllowed("user")
+    //@RolesAllowed("user")
     @Path("{eventId}")
     @Produces(MediaType.APPLICATION_JSON)
 
@@ -39,7 +35,7 @@ public class EventResource {
     }
 
     @GET
-    @RolesAllowed("user")
+    //@RolesAllowed("user")
     @Path("association/{associationId}")
     @Produces(MediaType.APPLICATION_JSON)
 
@@ -48,7 +44,7 @@ public class EventResource {
     }
 
     @POST
-    @RolesAllowed("admin")
+    //@RolesAllowed("admin")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
 
