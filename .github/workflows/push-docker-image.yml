@@ -40,6 +40,6 @@ jobs:
         run: |
           docker push docker.benevolo.de/stiehl-seine-perlen/party-panda:dev
 
-     # - name: "Deploy new image"
-      #  run: |
-      #    curl -X POST https://portainer.benevolo.de/api/webhooks/488f8b04-2bf7-44f2-8d40-1b687e4e63e6
+      - name: "Deploy new image"
+        run: |
+         curl -X POST https://portainer.benevolo.de/api/webhooks/bad99f1a-566c-4fe7-bcd6-8e967f5bd519
