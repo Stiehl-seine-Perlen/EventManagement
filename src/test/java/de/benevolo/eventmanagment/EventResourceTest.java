@@ -35,7 +35,8 @@ public class EventResourceTest {
                   "eventName": "Erstes Event",
                   "eventDescription": "Erstes Event von Association 4",
                   "membersOnly": true,
-                  "eventParticipants":[]
+                  "eventParticipants":[],
+                  "date": "2023-07-15"
                 }
                 				""";
 
@@ -45,7 +46,8 @@ public class EventResourceTest {
                   "eventName": "Zweites Event",
                   "eventDescription": "Event 2 von Association 5",
                   "membersOnly": true,
-                  "eventParticipants":[]
+                  "eventParticipants":[],
+                  "date": "2023-07-30"
                 }
                 				""";
 
@@ -68,7 +70,6 @@ public class EventResourceTest {
                 .body(is("[]"));
     }
 
-
     @Test
     @TestSecurity(authorizationEnabled = false)
     public void shouldPersistTwoEvents() {
@@ -81,6 +82,38 @@ public class EventResourceTest {
 
     }
 
+    @Test
+    public void ShouldUpdateEvent(){
+                given()
+                .body(event1)
+                .contentType(ContentType.JSON)
+                .when()
+                .post("/event")
+                .then()
+                .statusCode(200);
+
+                given()
+                .body(event2)
+                .contentType(ContentType.JSON)
+                .when()
+                .put("/event/update/1")
+                .then()
+                .statusCode(200);
+    }
+
+/*    @Test
+    public void shouldFetchEventByAssociationId(){
+
+        persistTwoEvents();
+
+
+    }
+
+    @Test
+    public void shouldFetchEventByEventId(){
+
+        persistTwoEvents();
+    }*/
 
     public void persistTwoEvents(){
                 given()
