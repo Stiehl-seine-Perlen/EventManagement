@@ -3,10 +3,6 @@ package de.benevolo.eventmanagment.controller;
 
 import de.benevolo.entities.events.Event;
 import de.benevolo.eventmanagment.services.EventService;
-import io.quarkus.oidc.IdToken;
-import org.eclipse.microprofile.jwt.JsonWebToken;
-
-import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
